@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <record id="company_phone_tree" model="ir.ui.view">
+        <field name="name">Company Phones</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Company Phones">
+                <field name="name"/>
+                <field name="mobile_phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="company_phone_search" model="ir.ui.view">
+        <field name="name">Company Phones</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <search string="Company Phones">
+                <field name="name"/>
+                <field name="mobile_phone"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="company_phone_form" model="ir.ui.view">
+        <field name="name">Company Phones</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <form string="Company Phones">
+                <group>
+                    <field name="name"/>
+                    <field name="mobile_phone"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_phone_action" model="ir.actions.act_window">
+        <field name="name">Company Phones</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem id="company_phone_root"
+        name="Company Phones"
+        icon="fa-wrench"
+        groups="base.group_user"
+        web_icon="mrp,static/description/icon.png"
+        sequence="100"/>
+
+    <menuitem id="menu_company_phone"
+        name="Company Phones"
+        action="company_phone_action"
+        parent="company_phone_root"
+        sequence="100"/>
+
+
+</data>
+</odoo>

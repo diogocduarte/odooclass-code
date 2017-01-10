@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="barcode_scan assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/barcode_scan/static/src/js/bench_mode.js"></script>
+            <link rel="stylesheet" href="/barcode_scan/static/src/less/bench.less"/>
+        </xpath>
+    </template>
+</odoo>
