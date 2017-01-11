@@ -23,12 +23,12 @@ gui.Gui.prototype.screen_classes.filter(function(el) { return el.name == 'client
     render_list: function (partners) {
         var self = this;
         this._super.apply(this, arguments);
-        console.debug('--------------- RENDER LIST');
+        //console.debug('--------------- RENDER LIST');
     },
     display_client_details: function (visibility, partner, clickpos) {
         var self = this;
         this._super.apply(this, arguments);
-        console.debug('--------------- TEST --- ');
+        //console.debug('--------------- TEST --- ');
     }
 });
 

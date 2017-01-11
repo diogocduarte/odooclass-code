@@ -13,4 +13,27 @@
         </t>
     </t>
 
+    <t t-extend="ClientDetails">
+        <t t-jquery='.client-details-right' t-operation='append'>
+            <div class='client-detail'>
+                <span class='label'>Member</span>
+                <t t-if='partner.membership_code'>
+                    <span class='detail client-id'><t t-esc='partner.membership_code'/></span>
+                </t>
+                <t t-if='!partner.membership_code'>
+                    <span class='detail client-id empty'>N/A</span>
+                </t>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="ClientDetailsEdit">
+        <t t-jquery='.client-details-right' t-operation='append'>
+            <div class='client-detail'>
+                <span class='label'>Member</span>
+                <input class='detail client-membership-code'  name='membership_code' t-att-value='partner.membership_code || ""'></input>
+            </div>
+        </t>
+    </t>
+
 </template>
