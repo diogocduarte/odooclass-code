@@ -27,6 +27,12 @@
         </t>
     </t>
 
+    <t t-extend="PosTicket">
+        <t t-jquery='br:nth-of-type(4)' t-operation='after'>
+            Email: <t t-esc="widget.pos.cashier ? widget.pos.cashier.login : widget.pos.user.login"/><br />
+        </t>
+    </t>
+
     <t t-extend="ClientDetailsEdit">
         <t t-jquery='.client-details-right' t-operation='append'>
             <div class='client-detail'>

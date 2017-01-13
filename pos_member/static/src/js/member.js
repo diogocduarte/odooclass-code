@@ -18,7 +18,6 @@ models.PosModel = models.PosModel.extend({
     },
 });
 
-
 gui.Gui.prototype.screen_classes.filter(function(el) { return el.name == 'clientlist'})[0].widget.include({
     render_list: function (partners) {
         var self = this;
@@ -31,6 +30,5 @@ gui.Gui.prototype.screen_classes.filter(function(el) { return el.name == 'client
         //console.debug('--------------- TEST --- ');
     }
 });
-
 
 });
