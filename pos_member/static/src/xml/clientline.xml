@@ -27,12 +27,6 @@
         </t>
     </t>
 
-    <t t-extend="PosTicket">
-        <t t-jquery='br:nth-of-type(4)' t-operation='after'>
-            Login: <t t-esc="widget.pos.user.login"/><br />
-        </t>
-    </t>
-
     <t t-extend="ClientDetailsEdit">
         <t t-jquery='.client-details-right' t-operation='append'>
             <div class='client-detail'>
@@ -42,4 +36,9 @@
         </t>
     </t>
 
+    <t t-extend="PosTicket">
+        <t t-jquery='br:nth-of-type(4)' t-operation='after'>
+            Login: <t t-esc="widget.pos.user.login"/><br />
+        </t>
+    </t>
 </template>

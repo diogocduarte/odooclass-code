@@ -1,0 +1,289 @@
+<odoo>
+  <data>
+
+<!-- Starting Create New Account -->
+    <record model="ir.actions.act_window" id="irastorage_account.action_window">
+      <field name="name">Create New Account</field>
+      <field name="res_model">irastorage_account.irastorage_account</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+      <record id="irastorageaccount_form" model="ir.ui.view">
+          <field name="name">Create New Account</field>
+          <field name="model">irastorage_account.irastorage_account</field>
+          <field name="arch" type="xml">
+              <form string="">
+                  <sheet>
+                      <group>
+                          <field name="name"/>
+                          <field name="lastname"/>
+                          <field name="accountnumber"  style="text-align:left;"/>
+                          <field name="date_opened"/>
+                          <field name="accounttype"/>
+                      </group>
+
+                  <notebook>
+                        <page string="Invetories against user">
+                            <group col="4">
+                                 <tree>
+                                     <field name="expecting_inventories" string="Inventories">
+                                                 <form>
+                                                     <field name="commodity"/>
+                                                     <field name="products"/>
+                                                     <field name="qty" string="Total Quantity Expected"  style="text-align:left;"/>
+                                                     <field name="total_recieved_qty" string="Total Received Quantity"  style="text-align:left;"/>
+                                                 </form>
+                                                 <tree>
+                                                     <field name="commodity"/>
+                                                     <field name="products"/>
+                                                     <field name="qty" string="Total Quantity Expected"  style="text-align:left;"/>
+                                                     <field name="total_recieved_qty" string="Total Received Quantity"  style="text-align:left;"/>
+                                                 </tree>
+                                     </field>
+                                 </tree>
+                            </group>
+                        </page>
+                  </notebook>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+      <record id="irastorageaccount_tree" model="ir.ui.view">
+          <field name="name">Create New Account</field>
+          <field name="model">irastorage_account.irastorage_account</field>
+          <field name="arch" type="xml">
+              <tree string="Create New Account">
+                  <field name="name"/>
+                  <field name="lastname"/>
+                  <field name="accountnumber" style="text-align:left;"/>
+                  <field name="date_opened"/>
+                  <field name="accounttype"/>
+              </tree>
+          </field>
+      </record>
+    <record model="ir.ui.view" id="irastorage_account.list">
+      <field name="name">IRAStorageAccount list</field>
+      <field name="model">irastorage_account.irastorage_account</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="lastname"/>
+          <field name="accountnumber"/>
+		  <field name="date_opened"/>
+		  <field name="accounttype"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="irastorage_account.list2">
+      <field name="name">IRAStorageAccount list</field>
+      <field name="model">irastorage_account.irastorage_account</field>
+        <field name="priority">21</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="lastname"/>
+          <field name="accountnumber"/>
+		  <field name="date_opened"/>
+		  <field name="accounttype"/>
+          <field name="total_qty"/>
+        </tree>
+      </field>
+    </record>
+<!-- Ending Create New Account -->
+
+
+<!-- Starting expecting inventory -->
+    <record model="ir.actions.act_window" id="action_expectinginventory">
+      <field name="name">Add New Expecting Inventory</field>
+      <field name="res_model">expectinginventory</field>
+      <field name="view_mode">tree,form</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="products"/>
+            <field name="qty"/>
+            <field name="account_id"/>
+        </tree>
+      </field>
+    </record>
+	<record id="expectinginventory_form" model="ir.ui.view">
+        <field name="name">Add Expecting Inventory</field>
+        <field name="model">expectinginventory</field>
+        <field name="arch" type="xml">
+            <form string="Expecting Inventory">
+                <group>
+                    <field name="total_qty"/>
+                    <field name="total_recieved_qty" string="Total Received Quantity"/>
+                    <field name="account_id"/>
+                    <field name="date_opened"/>
+                    <field name="date_received"  attrs="{'invisible':1}"/>
+                </group>
+                <notebook>
+                    <page string="Lines">
+						<field name="order_line">
+							<form string="Expecting Inventory Lines">
+								<group>
+									<field name="commodity"/>
+                                    <field name="products"/>
+                                    <field name="qty"/>
+								</group>
+							</form>
+							<tree string="Expecting Inventory Lines" editable="bottom">
+								<field name="commodity" string="Commodity"/>
+                                <field name="products" string="Product Name"/>
+								<field name="qty" string="Expected Quantity"/>
+                                <field name="received_qty" string="Received Quantity"/>
+							</tree>
+						</field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="expectinginventory_treeview" model="ir.ui.view">
+        <field name="name">expectinginventory.tree.view</field>
+        <field name="model">expectinginventory</field>
+        <field name="view_mode">tree</field>
+        <field name= "arch" type = "xml">
+            <tree string="Inventories">
+				<field name="date_opened" string="Date Opened"/>
+                <field name="account_id"/>
+				<field name="total_qty" string="Total Expected" style="text-align:left;"/>
+				<field name="total_recieved_qty" string="Total Recieved" style="text-align:left;"/>
+            </tree>
+        </field>
+    </record>
+<!-- Ending expecting inventory -->
+
+<!-- Starting Product Description -->
+    <record model="ir.actions.act_window" id="irastorage_account.action_windows">
+      <field name="name">Create New Product Description</field>
+      <field name="res_model">product_description.product_description</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.ui.view" id="irastorage_account.list">
+      <field name="name">Product Description list</field>
+      <field name="model">product_description.product_description</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+<!-- Ending Product Description -->
+
+<!-- Start Pending Accounts -->
+      <record id="pending_account_action" model="ir.actions.act_window">
+          <field name="name">Pending Accounts</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">pending.accounts</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+      <record id="pending_accounts_tree" model="ir.ui.view">
+          <field name="name">Pending Accounts</field>
+          <field name="model">pending.accounts</field>
+          <field name="arch" type="xml">
+              <tree  style="text-align:left;" create="false" colors="red:possible_reason=='Too much product';cadetblue:possible_reason=='Not enough product';green:possible_reason=='Incorrect product'">
+                  <field name="firstname" string="First Name"/>
+                  <field name="lastname" string="Last Name"/>
+                  <field name="expected_qty" string="Quantity Expected" style="text-align:left !important;"/>
+                  <field name="recieved_qty" string="Quantity Recieved" style="text-align:left !important;"/>
+                  <field name="possible_reason" string="Possible Reasons"/>
+                  <field name="possible_solution" string="Possible Solutions"/>
+				  <field name="notes" string="Notes" />
+              </tree>
+          </field>
+      </record>
+      <record id="pending_accounts_forrm" model="ir.ui.view">
+          <field name="name">Pending Accounts</field>
+          <field name="model">pending.accounts</field>
+          <field name="arch" type="xml">
+              <form create="false"  style="text-align:left;">
+                  <sheet>
+                      <group>
+                          <field name="firstname" string="First Name"/>
+                          <field name="lastname" string="Last Name"/>
+                          <field name="expected_qty" string="Quantity Expected" style="text-align:left !important;"/>
+                          <field name="recieved_qty" string="Quantity Recieved"  style="text-align:left !important;"/>
+                          <field name="possible_reason" string="Possible Reasons"/>
+                          <field name="possible_solution" string="Possible Solutions"/>
+						  <field name="notes" string="Notes" />
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+<!-- Ending Pending Accounts -->
+
+<!-- Starting Possible Solutions -->
+      <record id="possible_solutions_action" model="ir.actions.act_window">
+          <field name="name">Possible Solutions</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">possible.solutions</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+<!-- Ending Possible Solutions -->
+
+<!-- Starting Possible Reasons -->
+      <record id="possible_reasons_action" model="ir.actions.act_window">
+          <field name="name">Possible Reasons</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">possible.reasons</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+<!-- Ending Possible Reasons -->
+
+
+<!-- Top menu item -->
+
+      <menuitem name="IRA Storage Account" id="irastorage_account.menu_root"/>
+
+<!-- menu categories -->
+
+    <menuitem name="IRA Accounts Management" id="irastorage_account.menu_1" parent="irastorage_account.menu_root"/>
+
+    <menuitem name="Inventory Management" id="irastorage_account.menu_2" parent="irastorage_account.menu_root"/>
+
+    <menuitem name="Create New Account" id="irastorage_account.menu_1_list" parent="irastorage_account.menu_1"
+              action="irastorage_account.action_window"/>
+
+	
+    <menuitem name="Expecting Inventory" id="menu_expecting_inventory" parent="irastorage_account.menu_2"
+              action="action_expectinginventory"/>
+
+    <menuitem name="Possible Soltions" id="menu_possible_solutions" parent="irastorage_account.menu_2"
+              action="possible_solutions_action"/>
+
+     <menuitem name="Possible Reasons" id="menu_possible_reasons" parent="irastorage_account.menu_2"
+              action="possible_reasons_action"/>
+      
+     <menuitem name="Product Description" id="menu_product_description" parent="irastorage_account.menu_2"
+              action="irastorage_account.action_windows"/>
+
+      <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_pending_accounts" name="Pending Accounts" parent="irastorage_account.menu_1"
+              action="pending_account_action" sequence=""/>
+
+  </data>
+</odoo>

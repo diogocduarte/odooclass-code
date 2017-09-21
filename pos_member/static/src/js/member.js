@@ -13,11 +13,12 @@ models.PosModel = models.PosModel.extend({
         });
         partner_model.fields.push('membership_code');
 
-        var users_model = _.find(this.models, function(model){
+        var user_model = _.find(this.models, function(model){
             return model.model === 'res.users' && model.ids == null;
         });
-        users_model.fields.push('login');
+        user_model.fields.push('login');
 
+        console.debug('---------------' + user_model.fields);
         // Inheritance
         return _super_posmodel.initialize.call(this, session, attributes);
     },

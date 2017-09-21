@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="action_report_account"
+        string="Account"
+        model="irastorage_account.irastorage_account"
+        report_type="qweb-pdf"
+        name="irastorage_account.report_irastorage_account"
+        file="irastorage_account.report_irastorage_account"
+    />
+</odoo>

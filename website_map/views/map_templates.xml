@@ -1,0 +1,35 @@
+<odoo>
+
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Website Map">
+      <xpath expr="." position="inside">
+          <link rel='stylesheet' href='/website_map/static/src/lib/leafletjs/leaflet.css'/>
+          <script type="text/javascript" src="/website_map/static/src/lib/leafletjs/leaflet.js"></script>
+          <script type="text/javascript" src="/website_map/static/src/js/map_widget.js"></script>
+      </xpath>
+    </template>
+
+    <template id="locations-map" name="Locations Map" page="True">
+        <t t-call="website.layout">
+          <div id="wrap">
+            <div class="oe_structure"/>
+            <div class="container">
+                <h2>Here is the Map</h2>
+                <div id="locations_map" style="position:relative; height:500px; width:100%;"></div>
+                <div id="empty_json" style="display:none">
+                    <h1>There is no data to show, objects might not have yet geo-location set</h1>
+                </div>
+                <h4>Here is the legend</h4>
+            </div>
+            <div class="oe_structure"/>
+          </div>
+        </t>
+    </template>
+
+    <record id="menu_locations_map" model="website.menu">
+        <field name="name">Locations</field>
+        <field name="url">/page/website_map.locations-map</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+
+</odoo>
